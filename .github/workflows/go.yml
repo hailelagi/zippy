@@ -19,9 +19,11 @@ jobs:
       
       - name: Install dependencies
         run: go mod download
+    
       - name: libz
         shell: bash
         run: sudo apt install -y libbz2-dev
+  
       - name: Build
         run: go build -v -race ./...
       - name: Run vetting
@@ -38,6 +40,10 @@ jobs:
 
     - name: Install dependencies
       run: go mod download
+
+    - name: libz
+      shell: bash
+      run: sudo apt install -y libbz2-dev
 
     - name: Test with the race detector
       run: go test -v -race ./...
