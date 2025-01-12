@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	zippy "github.com/hailelagi/src/zippy"
+	zippy "github.com/hailelagi/zippy/src"
 	"github.com/hanwen/go-fuse/v2/fs"
 )
 

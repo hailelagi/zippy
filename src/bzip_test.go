@@ -1,17 +1,15 @@
-package main
+package zippy
 
 import (
 	"bytes"
 	"compress/bzip2" // reader
 	"io"
 	"testing"
-
-	"github.com/hailelagi/fuse-zip/bzip"
 )
 
 func TestBzip2(t *testing.T) {
 	var compressed, uncompressed bytes.Buffer
-	w := bzip.NewWriter(&compressed)
+	w := NewWriter(&compressed)
 
 	// Write a repetitive message in a million pieces,
 	// compressing one copy but not the other.

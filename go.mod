@@ -1,4 +1,4 @@
-module github.com/hailelagi/fuse_zip
+module github.com/hailelagi/zippy
 
 go 1.23.0
 

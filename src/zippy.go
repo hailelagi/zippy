@@ -1,4 +1,4 @@
-package main
+package zippy
 
 /*
 go-fuse specifies interfaces for fusing onto a tree-like fs.
@@ -10,10 +10,6 @@ import (
 
 	"github.com/hanwen/go-fuse/v2/fs"
 )
-
-func NewArchiveFileSystem(name string) (root fs.InodeEmbedder, err error) {
-	return root, nil
-}
 
 type zippyRoot struct {
 	fs.Inode
@@ -35,3 +31,16 @@ func (r *zippyRoot) OnAdd(ctx context.Context) {}
 
 // Open and Read service the `open` and `read` syscalls
 // Getattr is serviced by `stat` and kin
+
+func NewArchiveFileSystem(name string) (root fs.InodeEmbedder, err error) {
+	return NewZip(name)
+}
+
+func NewZip(name string) (fs.InodeEmbedder, error) {
+	r, err := zip.OpenReader(name)
+	if err != nil {
+		return nil, err
+	}
+
+	return &zippyRoot{zr: r}, nil
+}

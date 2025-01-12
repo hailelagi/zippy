@@ -1,4 +1,4 @@
-package main
+package zippy
 
 /*
 #cgo CFLAGS: -I/usr/include
